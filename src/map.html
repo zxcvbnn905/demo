@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>上海艺术家历史地理地图</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        /* 基础样式重置 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: "KaiTi", sans-serif;
+        }
+        
+        /* 地图容器：全屏展示 */
+        #map {
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+        }
+
+        /* 简单的搜索/控制面板 UI  */
+        .control_panel {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            box-shadow: 0 0.2rem 1rem rgba(0,0,0,0.2);
+            z-index: 1000; /* 确保在地图图层之上 */
+            max-width: 30rem;
+        }
+
+        .control_panel h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.6rem;
+        }
+        .search_box {
+            width: 100%;
+            padding: 0.8rem;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+        }
+        .artist_list {
+            max-height: 20rem;
+            overflow-y: auto;
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="control_panel">
+        <h3>搜索</h3>
+        <input type="text" id="searchInput" class="search_box" placeholder="输入姓名或地点..." onkeyup="filterArtists()">
+        <div id="results" class="artist_list">正在加载数据...</div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="map.js"></script>
+</body>
+</html>
